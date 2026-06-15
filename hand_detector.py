@@ -18,11 +18,38 @@ class HandDetector:
         if results.multi_hand_landmarks:
 
             for hand_landmarks in results.multi_hand_landmarks:
+                landmark_list = []
 
                 self.mp_draw.draw_landmarks(
                     frame,
                     hand_landmarks,
                     self.mp_hands.HAND_CONNECTIONS
                 )
+
+                for idx, landmark in enumerate(hand_landmarks.landmark):
+                    h, w, c = frame.shape
+                    x = int(landmark.x * w)
+                    y = int(landmark.y * h)
+                    landmark_list.append([idx, x, y])
+                    cv2.putText(
+                        frame,
+                        str(idx),
+                        (x, y),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5,
+                        (0, 255, 0),
+                        1)
+
+                cv2.putText(
+                        frame,
+                        str(idx),
+                        (x, y),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5,
+                        (0, 255, 0),
+                        1
+                    )
+                if len(landmark_list) != 0:
+                    print(landmark_list[8])
 
         return frame
