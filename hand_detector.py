@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 
+from mudra_classifier import MudraClassifier
 
 class HandDetector:
 
@@ -8,6 +9,7 @@ class HandDetector:
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands()
         self.mp_draw = mp.solutions.drawing_utils
+        self.classifier = MudraClassifier()
 
     def detect_hands(self, frame):
 
@@ -49,8 +51,8 @@ class HandDetector:
                     )
 
                 if len(landmark_list) != 0:
+                    fingers=[]
 
-                    fingers = []
                     if landmark_list[4][1] > landmark_list[3][1]:
                         fingers.append(1)
                     else:
@@ -89,5 +91,18 @@ class HandDetector:
                         (0, 255, 0),
                         2
                     )
+
+                    mudra = self.classifier.classify(fingers)
+                    cv2.putText(
+                        frame,
+                        f"Mudra: {mudra}",
+                        (10, 80),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        1,
+                        (0, 255, 0),
+                        2
+                    )
+                       
+                    
 
         return frame
