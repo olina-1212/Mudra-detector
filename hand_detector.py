@@ -88,7 +88,7 @@ class HandDetector:
                         (10, 40),
                         cv2.FONT_HERSHEY_SIMPLEX,
                         1,
-                        (0, 255, 0),
+                        (0, 0, 0),
                         2
                     )
 
@@ -99,7 +99,7 @@ class HandDetector:
                         (10, 80),
                         cv2.FONT_HERSHEY_SIMPLEX,
                         1,
-                        (0, 255, 0),
+                        (0, 0, 0),
                         2
                     )
                        
