@@ -2,6 +2,8 @@ import cv2
 from hand_detector import HandDetector
 
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1100)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
 detector = HandDetector()
 
