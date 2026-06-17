@@ -14,16 +14,18 @@ class MudraClassifier:
         elif fingers == [0, 1, 1, 0, 0]:
             return "Kartarimukha"
 
-         elif fingers == [0, 1, 1, 0, 1]:
+        elif fingers == [0, 1, 1, 0, 1]:
             return "Mayura"
 
-         elif fingers == [1, 0, 1, 1, 1]:
+        elif fingers == [1, 0, 1, 1, 1]:
             return "Arala"
 
         elif fingers == [1, 0, 1, 0, 1]:
             return "Sukhatunda"
 
         elif fingers == [0, 0, 0, 0, 0]:
-            return "Sukhatunda"
+            return "Mushti"
+
+            
 
         return "Unknown"
